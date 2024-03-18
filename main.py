@@ -8,7 +8,7 @@ resB = []
 dataset_path = "dataset"
 tree = util.AVLTree()
 
-for root, dirs, files in os.walk(dataset_path):
+"""for root, dirs, files in os.walk(dataset_path):
     for file in files:
         ruta_archivo = os.path.join(root, file)
         nombre, extension = os.path.splitext(file)
@@ -27,7 +27,7 @@ for root, dirs, files in os.walk(dataset_path):
             type = "Human"
         else:
             type = "Flowers"
-        tree.insert_node(nombre, type, size, ruta_archivo, "white")
+        tree.insert_node(nombre, type, size, ruta_archivo, "white")"""
 
 def insertar_nodo_1():
     title = input("Ingrese el título del archivo: ")
@@ -103,7 +103,7 @@ def mostrar_informacion_6(nodos):
             print("Nodos disponibles:")
             for nodo in nodos:
                 print(f"- {nodo.title}")
-            titulo = input("Por favor elige una de los siguientes opciones de nodos: 4")
+            titulo = input("Por favor elige un nodo de la lista: ")
             for nodo in nodos:
                 if nodo.title == titulo:
                     target = nodo
@@ -213,8 +213,11 @@ while True:
                 nodos.append(no)
         mostrar_informacion_6(nodos)
     elif opcion == '7':
-        tree.generar_imagen()
-        tree.abrir_imagen()
+        if tree.root is not None:
+            tree.generar_imagen()
+            tree.abrir_imagen()
+        else:
+            print("Por favor ingrese algun nodo!")
     elif opcion == '8':
         print("Hasta luego!!!!")
         break
